@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<!--
-File creato da Carlo Centofanti
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+
+
+require_once 'config/autoload.inc.php';
+require_once 'config/config.inc.php';
+/*
+require_once "./Classes/Controller/CClinica.php";
+require_once "./Classes/Utility/USingleton.php";
+
+$clinica= USingleton::getInstance('CClinica');
+*/
+
+$CHome= USingleton::getInstance('CHome');
+$CHome->richiediPagina(); 
+?>
