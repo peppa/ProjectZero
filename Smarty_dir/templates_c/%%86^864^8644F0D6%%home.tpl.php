@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2014-11-25 01:36:45
+<?php /* Smarty version 2.6.26, created on 2014-11-25 16:00:38
          compiled from home.tpl */ ?>
 <!--
 Author: W3layouts
@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <a href="index.php">Home</a>
             </li>
             <li class="nav_top">
-                <a href="index.php?controllerAction=About">About</a>
+                <a href="index.php?controller=manageDB">DB</a>
                 <!--
                     <span>
 			<a href="">The Company</a> |

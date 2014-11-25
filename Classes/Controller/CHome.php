@@ -90,10 +90,10 @@ class CHome {
        
         
         switch ($controllore) {
-            case 'clogin':
-                echo"è partito il caso clogin dello switch su CHome";
-                $CLogin=  USingleton::getInstance('CLogin');
-                return $CLogin->smista();
+            case 'manageDB':
+                $CPatientsDB=  USingleton::getInstance('CPatientsDB');
+                $CPatientsDB->impostaHomeDB();
+                break;
             
 
             default:
