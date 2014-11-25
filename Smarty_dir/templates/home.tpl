@@ -76,11 +76,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </li>
     	</ul>
     </div>
-    <!-- il body fornito dalle view governate dai controllori si innesta qui  -->
-    {$body}
+    <div class="wrap">
+        <!-- il body fornito dalle view governate dai controllori si innesta qui  -->
+        {$body}
+    </div>
     
 </body>
 
 <footer>
-    {$footer}
+    <div class="wrap">
+        <!-- il footer fornito dalle view governate dai controllori si innesta qui  -->
+        {$footer}        
+    </div>
+    
 </footer>
