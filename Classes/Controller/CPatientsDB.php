@@ -51,7 +51,7 @@ class CPatientsDB{
 
 	}
 
-	public function impostaHomeDB(){
+	public function setHomePatients(){
 echo "iyg";
 		$view=Usingleton::getInstance('VClinica');
 		$this->fillArray();

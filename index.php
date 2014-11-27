@@ -11,5 +11,5 @@ $clinica= USingleton::getInstance('CClinica');
 */
 
 $CHome= USingleton::getInstance('CHome');
-$CHome->richiediPagina(); 
+$CHome->start(); 
 ?>

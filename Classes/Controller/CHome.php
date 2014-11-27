@@ -5,8 +5,8 @@
  */
 
 /**
- * CHome è il controllore principale. si occupa di riconoscere e smistare
- * tutte le richieste sui vari controllori.
+ * CHome is the main controller. It has to identify and switch all requests to 
+ * the right controller.
  *
  * @access public
  * @package CHome
@@ -25,79 +25,91 @@
  */
 class CHome {
     /**
-     * richiedi pagina si occupa di costruire la pagina e fare in modo che venga
-     * visualizzata
+     * start is the main function. It builds the requested page and shows it
+     * 
      */
-    public function richiediPagina() {
-        $this->impostaPagina();
-        $this->visualizzaPagina();
+    public function start() {
+        $this->setPage();
+        $this->showPage();
         
     }
     
-    public function impostaPagina() {
-        $this->caricaLoginBox();
-        $this->caricaBody();
-        $this->caricaFooter();
+    /*
+     * It sets the login Box, the Body and the Footer of the page
+     */
+    public function setPage() {
+        $this->loadLoginBox();
+        $this->loadBody();
+        $this->loadFooter();
         
     }
     
-    public function caricaLoginBox() {
+    /*
+     * Loads the login box if not logged yet or the logout button
+     */
+    public function loadLoginBox() {
         $VHome= USingleton::getInstance('VHome');
-        //$VHome= new VHome(); //riga da eliminare
         
-        if(!$this->loggato()){
-            $VHome->impostaLoginForm();
+        if(!$this->isLoggedIn()){
+            $VHome->setLoginForm();
         }
-        else $VHome->impostaLogoutButton();
+        else $VHome->setLogoutButton();
         
     }
     
-    public function caricaBody() {
-        return $this->smista(); //vedere cosa restituisce smista e se conviene restituire HTML o no
+    /*
+     * Demands to the switchControl to process the body
+     */
+    public function loadBody() {
+        return $this->switchControl(); 
         
     }
     
-    public function caricaFooter() {
+    /**
+     * Loads the Footer
+     */
+    public function loadFooter() {
         $VHome=  USingleton::getInstance('VHome');
-        
-        $VHome->impostaFooter();
+        $VHome->setFooter();
         
     }
     
-    public function visualizzaPagina() {
+    /*
+     * It asks to the wiev layer to show the page
+     */
+    public function showPage() {
         $VHome= USingleton::getInstance('VHome');
-        //$VHome=new VHome();//da eliminare
-        $VHome->visualizza();
+        $VHome->visualize();
            
     }
     
     /*
-     * verifica se l'utente è loggato. forse va in una classe CRuolo, che è in
-     * grado di determinare il ruolo dell'utente (medico, paziente admin)
+     * Checks if user is logged in. forse va in una classe CRuolo, che è in
+     * grado di determinare il ruolo dell'utente (medico, paziente admin)?
      */
-    public function loggato(){
+    public function isLoggedIn(){
         $USession=  USingleton::getInstance('USession');
-        if ($USession->get('username')){
-            return TRUE;            
-        }else return FALSE;
+        return $USession->isLogged();
+           
     }
     
-    public function smista() {
-        $VHome=  USingleton::getInstance('VHome');
-        //$VHome=new VHome(); //riga da rimuovere
+    /*
+     * It is the function which decides which controller has to be called to
+     * build and set the correct contents
+     */
+    public function switchControl() {
+        $VHome=  USingleton::getInstance('VHome');        
+        $controller=$VHome->getController();       
         
-        $controllore=$VHome->getController();
-       
-        
-        switch ($controllore) {
+        switch ($controller) {
             case 'manageDB':
                 $CPatientsDB=  USingleton::getInstance('CPatientsDB');
-                $CPatientsDB->impostaHomeDB();
+                $CPatientsDB->setHomePatients();
                 break;
             
 
             default:
-                $VHome->impostaHome();
+                $VHome->setHomepage();
                 
                 break;
         }

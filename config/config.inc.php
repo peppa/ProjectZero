@@ -11,6 +11,8 @@ global $config;
 //qui non c'è il numero di pagine della paginazione!!! va inserito!!
 
 $config['nomeClinica']='Clinica';
+//COOKIE SETTINGS
+$config['cookie']['holdtime']=60*60*24*60; //2 mesi;
 
 //SMARTY
 $config['smarty']['template_dir'] = 'Smarty_dir/templates';
@@ -31,6 +33,7 @@ $config['mysql']['database'] = 'clinica';
 //da settare email Webmaster
 $config['email_webmaster']='';
 
+//debug mode
 function debug($var){
     global $config;
     if ($config['debug']){

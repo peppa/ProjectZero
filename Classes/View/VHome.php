@@ -5,7 +5,7 @@
  */
 
 /**
- * Description of VHome
+ * VHome is the View layer of the main controller CHome.
  *
  * @access public
  * @package VHome
@@ -15,50 +15,65 @@
 /*
  * TO DO LIST
  * 
+ *
  * 
- * l'header ci deve essere sempre con il menu di navigazione. va caricato.
- * 
- * devo creare: 
- * logoutButton.tpl
- * footer.tpl
  * 
  */
 class VHome extends View{   
     
 
-    
-    public function impostaLoginForm() {
+    /*
+     * Set the login Form
+     */
+    public function setLoginForm() {
         $form=$this->fetch('login.tpl');
         $this->assign('loginBox',$form);
         
     }
     
-    public function impostaLogoutButton() {
+    /*
+     * Sets the logout button
+     */
+    public function setLogoutButton() {
         $button=  $this->fetch('loggedIn.tpl');
         $this->assign('loginBox', $button);
         
         
     }
     
-    public function impostaFooter() {
+    /*
+     * sets the Footer
+     */
+    public function setFooter() {
         $footer= $this->fetch('footer.tpl');
         $this->assign('footer', $footer);
         
     }
     
-    public function impostaHome() {
+    /*
+     * Sets the Homepage's Body content
+     */
+    public function setHomepage() {
         //$home_Body=  $this->fetch('HomeBody.tpl');
         $home_Body="qua ci va il body della home... manca ancora il tpl e va cambiato il commento su VHome.php in modo da fare la fetch";
-        $this->impostaBody($home_Body);
+        $this->setBody($home_Body);
         
     }
     
-    public function impostaBody($body) {
+    /*
+     * Sets the body passed as parameter
+     * 
+     * @param $body the fetched HTML body
+     */
+    public function setBody($body) {
         $this->assign('body', $body);
         
     }
     
-    public function visualizza() {
+    /**
+     * Displays the page
+     */
+    public function visualize() {
         
         $this->display('home.tpl');
         
